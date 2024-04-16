@@ -110,7 +110,6 @@
             <form id="consultancy-form" action="#" method="post">
                 <label for="industry_name">Name of the Industry \ Organization:</label>
                 <input type="text" id="industry_name" name="industry_name" required>
-
                 <label for="consultancy_nature">Nature of Consultancy:</label>
                 <div class="radio-container">
                     <input type="radio" id="testing" name="consultancy_nature" value="Testing" required>
@@ -120,11 +119,10 @@
                     <input type="radio" id="consultancy" name="consultancy_nature" value="Consultancy" required>
                     <label for="consultancy">Consultancy</label>
                 </div>
-
                 <label for="amount">Amount:</label>
                 <input type="number" id="amount" name="amount" required>
 
-                <label for="number_of_persons">Number of Persons:</label>
+                <label for="number_of_persons">Number of Faculty:</label>
                 <input type="number" id="number_of_persons" name="number_of_persons" required>
 
                 <input type="submit" value="Submit">
@@ -145,15 +143,18 @@
             var consultancyNature = formData.get('consultancy_nature');
             var subtotal = parseFloat(formData.get('amount'));
             var numberOfPersons = parseInt(formData.get('number_of_persons'));
-            var amountPerPerson = subtotal / numberOfPersons;
             var gstRate = 0.18;
             var gstAmount = subtotal * gstRate;
             var totalAmount = subtotal + gstAmount;
+            var facAmount = subtotal*0.70;
+            var orgAmount = subtotal*0.30;
+            var amountPerPerson = facAmount / numberOfPersons;
             var submittedInfo = '<table><thead><tr><th>Description</th><th>Value</th></tr></thead><tbody>';
-            submittedInfo += '<tr><td>Industry</td><td>' + industryName + '</td></tr>';
+            submittedInfo += '<tr><td>Organisation Name:</td><td>' + industryName + '</td></tr>';
             submittedInfo += '<tr><td>Consultancy Nature</td><td>' + consultancyNature + '</td></tr>';      
             submittedInfo += '<tr><td>Total Amount</td><td>Rs.' + subtotal.toFixed(2) + '</td></tr>';
-            submittedInfo += '<tr><td>Amount per Person</td><td>Rs.' + amountPerPerson.toFixed(2) + '</td></tr>';
+            submittedInfo += '<tr><td>To KEC</td><td>Rs.'+orgAmount.toFixed(2)+'</td></tr>';
+            submittedInfo += '<tr><td>Amount per Faculty</td><td>Rs.' + amountPerPerson.toFixed(2) + '</td></tr>';
             submittedInfo += '<tr><td>GST (18%)</td><td>Rs.' + gstAmount.toFixed(2) + '</td></tr>';
             submittedInfo += '<tr><td>Total Amount (including GST)</td><td>Rs.' + totalAmount.toFixed(2) + '</td></tr>';
             submittedInfo += '</tbody></table>';
