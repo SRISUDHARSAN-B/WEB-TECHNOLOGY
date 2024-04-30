@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Registration Form</title>
+<link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+<div class="container">
+    <h2>Employee Registration Form</h2>
+    <form action="http://localhost:8000/login" method="get">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="id">Id:</label>
+        <input type="id" id="id" name="id" required><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br><br>
+
+        <label for="position">Position:</label>
+        <select id="position" name="position" required>
+            <option value="">Select Position</option>
+            <option value="manager">Manager</option>
+            <option value="developer">Developer</option>
+            <option value="designer">Designer</option>
+        </select>
+        <br><br>
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label>
+        <br><br>
+        <label for="address">Address</label>
+        <input type="textarea" id="address" name="address">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>
